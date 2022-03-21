@@ -6,6 +6,31 @@ class card extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
+  // AlertDialog
+  Future<String?> createAlertDialog(BuildContext context) {
+    TextEditingController customController = TextEditingController();
+
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('Үгээ оруулна уу'),
+            content: TextField(
+              controller: customController,
+            ),
+            actions: [
+              MaterialButton(
+                elevation: 5.0,
+                child: Text('Хадгалах'),
+                onPressed: () {
+                  Navigator.of(context).pop(customController.text.toString());
+                },
+              )
+            ],
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -34,7 +59,17 @@ class card extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Icon(Icons.create),
+                    // Text Edit icon
+                    IconButton(
+                        onPressed: () {
+                          createAlertDialog(context).then((onValue) {
+                            SnackBar mySnackbar =
+                                SnackBar(content: Text('$onValue'));
+                            Scaffold.of(context).showSnackBar(mySnackbar);
+                          });
+                        },
+                        icon: Icon(Icons.create)),
+                    //Card delete icon
                     Icon(Icons.close),
                   ],
                 ),
