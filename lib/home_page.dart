@@ -1,3 +1,4 @@
+import 'package:flashcard/testing_a_list.dart';
 import 'package:flashcard/language.dart';
 import 'package:flutter/material.dart';
 
@@ -21,6 +22,8 @@ class _MyHomePageState extends State<MyHomePage> {
           Padding(
             padding: EdgeInsets.all(8.0),
             child: DropdownButton(
+              onChanged: (value){},
+              underline: SizedBox(),
                 icon: Icon(
                   Icons.language,
                   color: Colors.white,
@@ -39,13 +42,17 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     )
                     .toList(),
-                onChanged: (lang) {}),
+               ),
           )
         ],
       ),
       body: card(),
+      //Card add
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Card2(),),);},
         backgroundColor: Colors.green,
         child: const Icon(Icons.add),
       ),

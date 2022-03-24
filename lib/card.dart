@@ -62,6 +62,7 @@ class card extends StatelessWidget {
                     // Text Edit icon
                     IconButton(
                         onPressed: () {
+                          //add word
                           createAlertDialog(context).then((onValue) {
                             SnackBar mySnackbar =
                                 SnackBar(content: Text('$onValue'));
@@ -69,7 +70,7 @@ class card extends StatelessWidget {
                           });
                         },
                         icon: Icon(Icons.create)),
-                    //Card delete icon
+                    //Card remove icon
                     Icon(Icons.close),
                   ],
                 ),
